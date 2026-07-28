@@ -1,140 +1,24 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Admin Dashboard | Stackly</title>
-<link rel="stylesheet" href="styles.css">
-</head>
-<body class="dashboard-body">
-<div class="dashboard-layout">
-<aside class="sidebar">
-<a class="brand" href="admin-dashboard.html" aria-label="Stackly admin dashboard"><img src="assets/stackly-logo.webp" alt="Stackly"></a>
-<p class="side-label">Administration</p>
-<nav class="side-nav">
-<a class="active" href="#overview">Overview</a>
-<a href="#orders">Orders</a>
-<a href="404.html">Products</a>
-<a href="404.html">Customers</a>
-<a href="#appointments">Appointments</a>
-<a href="404.html">Blog posts</a>
-</nav>
-<p class="side-label">System</p>
-<nav class="side-nav">
-<a href="404.html">Team access</a>
-<a href="404.html">Settings</a>
-<a href="login.html">Log out</a>
-</nav>
-</aside>
-<main class="dashboard-main">
-<header class="dash-top">
-<div>
-<p class="eyebrow">Admin dashboard</p>
-<h1>Good morning, Vishwa</h1>
-</div>
-<div class="dash-profile">
-<a class="btn primary" href="404.html">Add product</a>
-<button class="menu dash-menu" aria-label="Open dashboard navigation">☰</button>
-<div class="dash-profile-copy"><strong>Vishwa Admin</strong><span data-profile-email data-fallback="admin@stackly.example">admin@stackly.example</span></div>
-<span class="avatar">VA</span>
-</div>
-</header>
-<section class="dash-grid" id="overview">
-<article class="metric">
-<small>Revenue this month</small>
-<strong>₹18.4L</strong>
-</article>
-<article class="metric">
-<small>New orders</small>
-<strong>46</strong>
-</article>
-<article class="metric">
-<small>Customers</small>
-<strong>1,284</strong>
-</article>
-<article class="metric">
-<small>Low stock items</small>
-<strong>07</strong>
-</article>
-</section>
-<div class="dash-panels">
-<section class="dash-panel" id="orders">
-<h2>Latest orders</h2>
-<div class="order-list">
-<div class="order-row">
-<strong>#SV24021</strong>
-<span>Riya Kapoor</span>
-<span>₹1,85,000</span>
-<em class="status">Paid</em>
-</div>
-<div class="order-row">
-<strong>#SV24020</strong>
-<span>Meera Das</span>
-<span>₹42,500</span>
-<em class="status">Packed</em>
-</div>
-<div class="order-row">
-<strong>#SV24019</strong>
-<span>Karthik Shah</span>
-<span>₹95,200</span>
-<em class="status">Shipped</em>
-</div>
-<div class="order-row">
-<strong>#SV24018</strong>
-<span>Ananya Rao</span>
-<span>₹68,900</span>
-<em class="status">Shipped</em>
-</div>
-</div>
-</section>
-<section class="dash-panel">
-<h2>Quick management</h2>
-<div class="quick-list">
-<a href="404.html">Add new product <span>+</span>
-</a>
-<a href="#appointments">Review appointments <span>08</span>
-</a>
-<a href="404.html">Publish blog post <span>→</span>
-</a>
-<a href="404.html">Export order report <span>↓</span>
-</a>
-</div>
-</section>
-</div>
-<div class="dash-panels">
-<section class="dash-panel" id="activity">
-<h2>Recent activity</h2>
-<ul class="activity">
-<li>
-<strong>New bespoke enquiry</strong>Bridal necklace consultation requested · 12 minutes ago</li>
-<li>
-<strong>Inventory updated</strong>Noor Drop Earrings increased to 14 pieces · 45 minutes ago</li>
-<li>
-<strong>Order dispatched</strong>Order #SV24018 handed to insured courier · 1 hour ago</li>
-</ul>
-</section>
-<section class="dash-panel" id="appointments">
-<h2>Today’s appointments</h2>
-<div class="order-list">
-<div class="order-row">
-<strong>11:00</strong>
-<span>Gold exchange</span>
-<span>R. Menon</span>
-<em class="status">Confirmed</em>
-</div>
-<div class="order-row">
-<strong>15:30</strong>
-<span>Bridal styling</span>
-<span>Ananya R.</span>
-<em class="status">Confirmed</em>
-</div>
-</div>
-</section>
-</div>
-</main>
-</div>
-<script src="script.js">
-</script>
-</body>
-</html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin Dashboard | Stackly</title><link rel="stylesheet" href="styles.css"></head>
+<body class="dashboard-body"><div class="dashboard-layout">
+<aside class="sidebar"><div class="sidebar-head"><a class="brand" href="admin-dashboard.html" aria-label="Stackly admin dashboard"><img src="assets/stackly-logo.webp" alt="Stackly"></a><button class="sidebar-close" type="button" aria-label="Close dashboard navigation">×</button></div>
+<p class="side-label">Administration</p><nav class="side-nav dashboard-nav"><a class="active" href="#overview" data-dashboard-target="overview">Overview</a><a href="#orders" data-dashboard-target="orders">Orders</a><a href="#products" data-dashboard-target="products">Products</a><a href="#customers" data-dashboard-target="customers">Customers</a><a href="#appointments" data-dashboard-target="appointments">Appointments</a><a href="#posts" data-dashboard-target="posts">Blog Posts</a></nav>
+<p class="side-label">System</p><nav class="side-nav dashboard-nav"><a href="#team" data-dashboard-target="team">Team Access</a><a href="#settings" data-dashboard-target="settings">Settings</a><a href="login.html">Log Out</a></nav></aside>
+<main class="dashboard-main"><header class="dash-top"><div><p class="eyebrow">Admin dashboard</p><h1 id="dashboard-title">Good morning, Vishwa</h1></div><div class="dash-profile"><button class="menu dash-menu" aria-label="Open dashboard navigation">☰</button><div class="dash-profile-copy"><strong>Vishwa Admin</strong><span data-profile-email data-fallback="admin@stackly.example">admin@stackly.example</span></div><span class="avatar">VA</span></div></header>
 
+<section class="dashboard-view active" id="overview" data-view-title="Admin overview"><div class="view-heading"><div><p class="eyebrow">Business pulse</p><h2>Store overview</h2></div><p>Live performance across sales, clients and inventory.</p></div><div class="dash-grid"><article class="metric"><small>Revenue this month</small><strong>₹18.4L</strong></article><article class="metric"><small>New orders</small><strong>46</strong></article><article class="metric"><small>Customers</small><strong>1,284</strong></article><article class="metric"><small>Low stock items</small><strong>07</strong></article></div><div class="dash-panels"><article class="dash-panel"><h2>Recent activity</h2><ul class="activity"><li><strong>New bespoke enquiry</strong>Bridal consultation requested · 12 minutes ago</li><li><strong>Inventory updated</strong>Noor Drop Earrings increased to 14 pieces · 45 minutes ago</li><li><strong>Order dispatched</strong>Order #SV24018 handed to courier · 1 hour ago</li></ul></article><article class="dash-panel"><h2>Quick management</h2><div class="quick-list"><a href="#products" data-dashboard-target="products">Manage products <span>→</span></a><a href="#appointments" data-dashboard-target="appointments">Review appointments <span>08</span></a><a href="#posts" data-dashboard-target="posts">Manage journal <span>→</span></a></div></article></div></section>
+
+<section class="dashboard-view" id="orders" data-view-title="Order management"><div class="view-heading"><div><p class="eyebrow">Fulfilment</p><h2>Orders</h2></div><a class="btn" href="404.html">Export report</a></div><div class="dash-panel"><div class="order-list"><div class="order-row"><strong>#SV24021</strong><span>Riya Kapoor</span><span>₹1,85,000</span><em class="status">Paid</em></div><div class="order-row"><strong>#SV24020</strong><span>Meera Das</span><span>₹42,500</span><em class="status">Packed</em></div><div class="order-row"><strong>#SV24019</strong><span>Karthik Shah</span><span>₹95,200</span><em class="status">Shipped</em></div><div class="order-row"><strong>#SV24018</strong><span>Ananya Rao</span><span>₹68,900</span><em class="status">Shipped</em></div></div></div></section>
+
+<section class="dashboard-view" id="products" data-view-title="Product catalogue"><div class="view-heading"><div><p class="eyebrow">Catalogue</p><h2>Products</h2></div><a class="btn primary" href="404.html">Add product</a></div><div class="grid three dashboard-products"><article class="card product"><img src="assets/aarohi-necklace.webp" alt="Aarohi necklace"><div class="card-body"><span class="status">In stock · 8</span><h3>Aarohi Collar</h3><p class="price">₹1,85,000</p><a class="text-link" href="404.html">Edit product →</a></div></article><article class="card product"><img src="assets/tara-ring.webp" alt="Tara ring"><div class="card-body"><span class="status">Low stock · 2</span><h3>Tara Solitaire</h3><p class="price">₹68,900</p><a class="text-link" href="404.html">Edit product →</a></div></article><article class="card product"><img src="assets/noor-earrings.webp" alt="Noor earrings"><div class="card-body"><span class="status">In stock · 14</span><h3>Noor Drops</h3><p class="price">₹42,500</p><a class="text-link" href="404.html">Edit product →</a></div></article></div></section>
+
+<section class="dashboard-view" id="customers" data-view-title="Customer directory"><div class="view-heading"><div><p class="eyebrow">Client relationships</p><h2>Customers</h2></div><a class="btn" href="404.html">Export customers</a></div><div class="dash-panel"><div class="customer-list"><div><span class="avatar">RK</span><p><strong>Riya Kapoor</strong><small>riya@example.com · 4 orders</small></p><a href="404.html">View</a></div><div><span class="avatar">MD</span><p><strong>Meera Das</strong><small>meera@example.com · 7 orders</small></p><a href="404.html">View</a></div><div><span class="avatar">AR</span><p><strong>Ananya Rao</strong><small>ananya@example.com · 3 orders</small></p><a href="404.html">View</a></div></div></div></section>
+
+<section class="dashboard-view" id="appointments" data-view-title="Appointment calendar"><div class="view-heading"><div><p class="eyebrow">Client calendar</p><h2>Appointments</h2></div><a class="btn primary" href="404.html">Add appointment</a></div><div class="dash-panels"><article class="dash-panel appointment-card"><span class="status">11:00 AM</span><h2>Gold exchange</h2><p>R. Menon · Exchange specialist · 30 minutes</p><a class="text-link" href="404.html">View details →</a></article><article class="dash-panel appointment-card"><span class="status">3:30 PM</span><h2>Bridal styling</h2><p>Ananya Rao · Priya S. · 90 minutes</p><a class="text-link" href="404.html">View details →</a></article></div></section>
+
+<section class="dashboard-view" id="posts" data-view-title="Blog management"><div class="view-heading"><div><p class="eyebrow">Stackly journal</p><h2>Blog posts</h2></div><a class="btn primary" href="404.html">Create post</a></div><div class="dash-panel"><div class="post-admin-row"><div><span class="status">Published</span><h3>How to keep your gold glowing</h3><p>July 18, 2026 · Care</p></div><a href="404.html">Edit</a></div><div class="post-admin-row"><div><span class="status">Published</span><h3>The language of temple jewellery</h3><p>July 09, 2026 · Craft</p></div><a href="404.html">Edit</a></div><div class="post-admin-row"><div><span class="status">Draft</span><h3>Inside the bridal atelier</h3><p>Updated 2 hours ago</p></div><a href="404.html">Edit</a></div></div></section>
+
+<section class="dashboard-view" id="team" data-view-title="Team access"><div class="view-heading"><div><p class="eyebrow">Permissions</p><h2>Team access</h2></div><a class="btn primary" href="404.html">Invite member</a></div><div class="grid three"><article class="dash-panel"><span class="avatar">VA</span><h2>Vishwa Admin</h2><p>Owner · Full access</p></article><article class="dash-panel"><span class="avatar">PS</span><h2>Priya Shah</h2><p>Appointments · Client records</p></article><article class="dash-panel"><span class="avatar">KM</span><h2>Karan Mehta</h2><p>Products · Orders</p></article></div></section>
+
+<section class="dashboard-view" id="settings" data-view-title="Store settings"><div class="view-heading"><div><p class="eyebrow">Configuration</p><h2>Settings</h2></div><a class="btn primary" href="404.html">Save changes</a></div><div class="dash-panels"><article class="dash-panel"><h2>Store profile</h2><div class="setting-row"><span>Store name</span><strong>Stackly Jewellers</strong></div><div class="setting-row"><span>Currency</span><strong>INR (₹)</strong></div><div class="setting-row"><span>Timezone</span><strong>Asia/Kolkata</strong></div></article><article class="dash-panel"><h2>Notifications</h2><div class="setting-row"><span>New orders</span><strong>Enabled</strong></div><div class="setting-row"><span>Low stock</span><strong>Enabled</strong></div><div class="setting-row"><span>Appointments</span><strong>Enabled</strong></div></article></div></section>
+</main></div><script src="script.js"></script></body></html>

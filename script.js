@@ -85,14 +85,36 @@ if(profileEmail) profileEmail.textContent=sessionStorage.getItem('stacklyEmail')
 
 const dashMenu=document.querySelector('.dash-menu');
 const sidebar=document.querySelector('.sidebar');
+const sidebarClose=document.querySelector('.sidebar-close');
+const dashboardViews=[...document.querySelectorAll('.dashboard-view')];
+const dashboardLinks=[...document.querySelectorAll('[data-dashboard-target]')];
+function closeSidebar(){
+  sidebar?.classList.remove('open');
+  document.body.classList.remove('sidebar-open');
+  dashMenu?.setAttribute('aria-expanded','false');
+}
+function showDashboardView(id,updateHash=true){
+  if(!dashboardViews.length)return;
+  const target=document.getElementById(id)||dashboardViews[0];
+  dashboardViews.forEach(view=>view.classList.toggle('active',view===target));
+  dashboardLinks.forEach(link=>link.classList.toggle('active',link.dataset.dashboardTarget===target.id&&link.closest('.side-nav')));
+  target.querySelectorAll('.scroll-animate').forEach(el=>el.classList.add('in'));
+  document.getElementById('dashboard-title')?.replaceChildren(document.createTextNode(target.dataset.viewTitle||'Dashboard'));
+  if(updateHash) history.replaceState(null,'',`#${target.id}`);
+  window.scrollTo({top:0,behavior:isReduced?'auto':'smooth'});
+  closeSidebar();
+}
 dashMenu?.setAttribute('aria-expanded','false');
 dashMenu?.addEventListener('click',()=>{
   const open=sidebar.classList.toggle('open');
   document.body.classList.toggle('sidebar-open',open);
   dashMenu.setAttribute('aria-expanded',String(open));
 });
-sidebar?.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
-  sidebar.classList.remove('open');
-  document.body.classList.remove('sidebar-open');
-  dashMenu?.setAttribute('aria-expanded','false');
+sidebarClose?.addEventListener('click',closeSidebar);
+dashboardLinks.forEach(link=>link.addEventListener('click',event=>{
+  event.preventDefault();
+  showDashboardView(link.dataset.dashboardTarget);
 }));
+sidebar?.querySelectorAll('a:not([data-dashboard-target])').forEach(link=>link.addEventListener('click',closeSidebar));
+if(dashboardViews.length) showDashboardView(location.hash.slice(1)||'overview',false);
+window.addEventListener('hashchange',()=>showDashboardView(location.hash.slice(1)||'overview',false));
