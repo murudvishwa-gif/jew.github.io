@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin Dashboard | Suvarna</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="dashboard-body">
+<div class="dashboard-layout">
+<aside class="sidebar">
+<a class="brand" href="index.html" aria-label="Stackly home"><img src="assets/stackly-logo.webp" alt="Stackly"></a>
+<p class="side-label">Administration</p>
+<nav class="side-nav">
+<a class="active" href="admin-dashboard.html">Overview</a>
+<a href="#">Orders</a>
+<a href="#">Products</a>
+<a href="#">Customers</a>
+<a href="#">Appointments</a>
+<a href="#">Blog posts</a>
+</nav>
+<p class="side-label">System</p>
+<nav class="side-nav">
+<a href="#">Team access</a>
+<a href="#">Settings</a>
+<a href="login.html">Log out</a>
+</nav>
+</aside>
+<main class="dashboard-main">
+<header class="dash-top">
+<div>
+<p class="eyebrow">Admin dashboard</p>
+<h1>Good morning, Vishwa</h1>
+</div>
+<div style="display:flex;gap:12px;align-items:center">
+<a class="btn primary" href="#">Add product</a>
+<button class="menu dash-menu" aria-label="Open dashboard navigation">☰</button>
+<span class="avatar">VA</span>
+</div>
+</header>
+<section class="dash-grid">
+<article class="metric">
+<small>Revenue this month</small>
+<strong>₹18.4L</strong>
+</article>
+<article class="metric">
+<small>New orders</small>
+<strong>46</strong>
+</article>
+<article class="metric">
+<small>Customers</small>
+<strong>1,284</strong>
+</article>
+<article class="metric">
+<small>Low stock items</small>
+<strong>07</strong>
+</article>
+</section>
+<div class="dash-panels">
+<section class="dash-panel">
+<h2>Latest orders</h2>
+<div class="order-list">
+<div class="order-row">
+<strong>#SV24021</strong>
+<span>Riya Kapoor</span>
+<span>₹1,85,000</span>
+<em class="status">Paid</em>
+</div>
+<div class="order-row">
+<strong>#SV24020</strong>
+<span>Meera Das</span>
+<span>₹42,500</span>
+<em class="status">Packed</em>
+</div>
+<div class="order-row">
+<strong>#SV24019</strong>
+<span>Karthik Shah</span>
+<span>₹95,200</span>
+<em class="status">Shipped</em>
+</div>
+<div class="order-row">
+<strong>#SV24018</strong>
+<span>Ananya Rao</span>
+<span>₹68,900</span>
+<em class="status">Shipped</em>
+</div>
+</div>
+</section>
+<section class="dash-panel">
+<h2>Quick management</h2>
+<div class="quick-list">
+<a href="#">Add new product <span>+</span>
+</a>
+<a href="#">Review appointments <span>08</span>
+</a>
+<a href="#">Publish blog post <span>→</span>
+</a>
+<a href="#">Export order report <span>↓</span>
+</a>
+</div>
+</section>
+</div>
+<div class="dash-panels">
+<section class="dash-panel">
+<h2>Recent activity</h2>
+<ul class="activity">
+<li>
+<strong>New bespoke enquiry</strong>Bridal necklace consultation requested · 12 minutes ago</li>
+<li>
+<strong>Inventory updated</strong>Noor Drop Earrings increased to 14 pieces · 45 minutes ago</li>
+<li>
+<strong>Order dispatched</strong>Order #SV24018 handed to insured courier · 1 hour ago</li>
+</ul>
+</section>
+<section class="dash-panel">
+<h2>Today’s appointments</h2>
+<div class="order-list">
+<div class="order-row">
+<strong>11:00</strong>
+<span>Gold exchange</span>
+<span>R. Menon</span>
+<em class="status">Confirmed</em>
+</div>
+<div class="order-row">
+<strong>15:30</strong>
+<span>Bridal styling</span>
+<span>Ananya R.</span>
+<em class="status">Confirmed</em>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+<script src="script.js">
+</script>
+</body>
+</html>
+
