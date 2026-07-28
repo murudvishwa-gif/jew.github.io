@@ -3,20 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>My Dashboard | Suvarna</title>
+<title>My Dashboard | Stackly</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body class="dashboard-body">
 <div class="dashboard-layout">
 <aside class="sidebar">
-<a class="brand" href="index.html" aria-label="Stackly home"><img src="assets/stackly-logo.webp" alt="Stackly"></a>
+<a class="brand" href="user-dashboard.html" aria-label="Stackly user dashboard"><img src="assets/stackly-logo.webp" alt="Stackly"></a>
 <p class="side-label">My account</p>
 <nav class="side-nav">
-<a class="active" href="user-dashboard.html">Overview</a>
-<a href="#">My orders</a>
-<a href="#">Wishlist</a>
-<a href="#">Appointments</a>
-<a href="#">Saved addresses</a>
+<a class="active" href="#overview">Overview</a>
+<a href="#orders">My orders</a>
+<a href="#wishlist">Wishlist</a>
+<a href="#appointments">Appointments</a>
+<a href="404.html">Saved addresses</a>
 </nav>
 <p class="side-label">Support</p>
 <nav class="side-nav">
@@ -31,12 +31,13 @@
 <p class="eyebrow">Member dashboard</p>
 <h1>Welcome back, Ananya</h1>
 </div>
-<div style="display:flex;gap:12px;align-items:center">
+<div class="dash-profile">
 <button class="menu dash-menu" aria-label="Open dashboard navigation">☰</button>
+<div class="dash-profile-copy"><strong>Ananya Rao</strong><span data-profile-email data-fallback="ananya@stackly.example">ananya@stackly.example</span></div>
 <span class="avatar">AR</span>
 </div>
 </header>
-<section class="dash-grid">
+<section class="dash-grid" id="overview">
 <article class="metric">
 <small>Active orders</small>
 <strong>02</strong>
@@ -55,7 +56,7 @@
 </article>
 </section>
 <div class="dash-panels">
-<section class="dash-panel">
+<section class="dash-panel" id="orders">
 <h2>Recent orders</h2>
 <div class="order-list">
 <div class="order-row">
@@ -87,20 +88,20 @@
 </a>
 <a href="services.html">Request jewellery care <span>→</span>
 </a>
-<a href="#">View wishlist <span>→</span>
+<a href="#wishlist">View wishlist <span>→</span>
 </a>
 </div>
 </section>
 </div>
 <div class="dash-panels">
-<section class="dash-panel">
+<section class="dash-panel" id="appointments">
 <h2>Upcoming appointment</h2>
 <p class="eyebrow">August 04 · 3:30 PM</p>
 <h3 style="font:24px var(--serif)">Private bridal consultation</h3>
 <p style="color:var(--muted);margin:8px 0 18px">Bengaluru flagship · With Priya, bridal specialist</p>
 <a class="btn" href="contact.html">Manage appointment</a>
 </section>
-<section class="dash-panel">
+<section class="dash-panel" id="wishlist">
 <h2>For you</h2>
 <p style="color:var(--muted)">Your saved styles suggest you may enjoy our new handcrafted Kundan edit.</p>
 <a class="text-link" href="index.html#collection">Explore your edit →</a>

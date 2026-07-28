@@ -1,27 +1,98 @@
+const isReduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const menu=document.querySelector('.menu:not(.dash-menu)');
 const links=document.querySelector('.nav-links');
+
+if(links&&!links.querySelector('.mobile-auth-link')){
+  links.insertAdjacentHTML('beforeend','<a class="mobile-auth-link" href="login.html">Log in</a><a class="mobile-auth-link mobile-join" href="signup.html">Sign up</a>');
+}
 menu?.setAttribute('aria-expanded','false');
 menu?.addEventListener('click',()=>{
-  const isOpen=links.classList.toggle('open');
-  menu.setAttribute('aria-expanded',String(isOpen));
+  const open=links.classList.toggle('open');
+  menu.setAttribute('aria-expanded',String(open));
+  document.body.classList.toggle('nav-open',open);
 });
 links?.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
   links.classList.remove('open');
   menu?.setAttribute('aria-expanded','false');
+  document.body.classList.remove('nav-open');
 }));
-const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in');observer.unobserve(entry.target)}}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-document.querySelectorAll('form[data-demo]').forEach(form=>form.addEventListener('submit',event=>{
+
+const footer=document.querySelector('.site-footer');
+if(footer){
+  footer.innerHTML=`<div class="wrap">
+    <div class="footer-grid premium-footer-grid">
+      <div class="foot-intro"><a class="brand" href="index.html" aria-label="Stackly home"><img src="assets/stackly-logo.webp" alt="Stackly"></a><p>Fine jewellery shaped by Indian craft, transparent practice and a belief that the most meaningful pieces live beyond one lifetime.</p><div class="social-links"><a href="404.html" aria-label="Instagram"></a><a href="404.html" aria-label="Facebook"></a><a href="404.html" aria-label="YouTube"></a><a href="404.html" aria-label="Pinterest"></a></div></div>
+      <div><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="blogs.html">Blogs</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><h4>Client Services</h4><ul><li><a href="contact.html">Book an appointment</a></li><li><a href="404.html">Track an order</a></li><li><a href="404.html">Shipping & returns</a></li><li><a href="404.html">Gold exchange</a></li><li><a href="404.html">Jewellery care</a></li></ul></div>
+      <div><h4>Visit & Contact</h4><p>12 Vittal Mallya Road<br>Bengaluru, Karnataka</p><p>Mon–Sat · 10:30 AM–7:30 PM</p><p><a href="404.html">+91 80 4567 1958</a><br><a href="404.html">care@stackly.example</a></p></div>
+    </div>
+    <div class="footer-subscribe"><div><p class="eyebrow">Private updates</p><h3>A little brilliance, occasionally.</h3><p>New collections, atelier stories and private previews.</p></div><form class="footer-signup" data-route="404.html"><input type="email" required aria-label="Email address" placeholder="Email address"><button type="submit">Join</button></form></div>
+    <div class="footer-bottom"><span>© 2026 Stackly Jewellers. All rights reserved.</span><div><a href="404.html">Privacy</a><a href="404.html">Terms</a><a href="404.html">Accessibility</a></div></div>
+  </div>`;
+}
+
+const animated=[...document.querySelectorAll('main section, .footer-grid > div, .footer-subscribe, .footer-bottom, .metric, .dash-panel')];
+animated.forEach((el,index)=>{
+  el.classList.add('scroll-animate');
+  el.style.setProperty('--delay',`${(index%4)*70}ms`);
+});
+document.querySelectorAll('.grid,.steps,.testimonial-grid,.stat-band,.auth-benefits,.dash-grid').forEach(group=>{
+  [...group.children].forEach((child,index)=>{
+    child.classList.add('scroll-animate');
+    child.style.setProperty('--delay',`${Math.min(index,5)*85}ms`);
+  });
+});
+
+if(isReduced){
+  document.querySelectorAll('.reveal,.scroll-animate').forEach(el=>el.classList.add('in'));
+}else{
+  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add('in');observer.unobserve(entry.target);}
+  }),{threshold:.1,rootMargin:'0px 0px -7% 0px'});
+  document.querySelectorAll('.reveal,.scroll-animate').forEach(el=>observer.observe(el));
+}
+
+document.querySelectorAll('a[href="#"]').forEach(link=>link.setAttribute('href','404.html'));
+
+document.querySelectorAll('form[data-demo],form[data-route]').forEach(form=>form.addEventListener('submit',event=>{
   event.preventDefault();
-  const message=form.querySelector('.message');
-  if(message) message.textContent=form.dataset.message||'Thank you. Your request has been received.';
-  form.reset();
+  if(!form.checkValidity()){form.reportValidity();return;}
+  window.location.href=form.dataset.route||'404.html';
 }));
+
+const contactForm=document.querySelector('form.form.reveal');
+if(contactForm&&!contactForm.hasAttribute('data-auth')&&!contactForm.hasAttribute('data-route')){
+  contactForm.addEventListener('submit',event=>{
+    event.preventDefault();
+    if(contactForm.checkValidity()) window.location.href='404.html';
+    else contactForm.reportValidity();
+  });
+}
+
 document.querySelectorAll('form[data-auth]').forEach(form=>form.addEventListener('submit',event=>{
   event.preventDefault();
+  if(!form.checkValidity()){form.reportValidity();return;}
+  const email=form.querySelector('input[type="email"]').value.trim();
   const role=form.querySelector('[name="domain"]').value;
-  const message=form.querySelector('.message');
-  if(message) message.textContent=`Opening your ${role} dashboard…`;
-  window.setTimeout(()=>{window.location.href=role==='admin'?'admin-dashboard.html':'user-dashboard.html'},450);
+  sessionStorage.setItem('stacklyEmail',email);
+  sessionStorage.setItem('stacklyRole',role);
+  if(location.pathname.toLowerCase().includes('signup')) window.location.href='login.html';
+  else window.location.href=role==='admin'?'admin-dashboard.html':'user-dashboard.html';
 }));
-document.querySelector('.dash-menu')?.addEventListener('click',()=>document.querySelector('.sidebar')?.classList.toggle('open'));
+
+const profileEmail=document.querySelector('[data-profile-email]');
+if(profileEmail) profileEmail.textContent=sessionStorage.getItem('stacklyEmail')||profileEmail.dataset.fallback;
+
+const dashMenu=document.querySelector('.dash-menu');
+const sidebar=document.querySelector('.sidebar');
+dashMenu?.setAttribute('aria-expanded','false');
+dashMenu?.addEventListener('click',()=>{
+  const open=sidebar.classList.toggle('open');
+  document.body.classList.toggle('sidebar-open',open);
+  dashMenu.setAttribute('aria-expanded',String(open));
+});
+sidebar?.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
+  sidebar.classList.remove('open');
+  document.body.classList.remove('sidebar-open');
+  dashMenu?.setAttribute('aria-expanded','false');
+}));

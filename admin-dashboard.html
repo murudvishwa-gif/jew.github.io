@@ -3,26 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Admin Dashboard | Suvarna</title>
+<title>Admin Dashboard | Stackly</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body class="dashboard-body">
 <div class="dashboard-layout">
 <aside class="sidebar">
-<a class="brand" href="index.html" aria-label="Stackly home"><img src="assets/stackly-logo.webp" alt="Stackly"></a>
+<a class="brand" href="admin-dashboard.html" aria-label="Stackly admin dashboard"><img src="assets/stackly-logo.webp" alt="Stackly"></a>
 <p class="side-label">Administration</p>
 <nav class="side-nav">
-<a class="active" href="admin-dashboard.html">Overview</a>
-<a href="#">Orders</a>
-<a href="#">Products</a>
-<a href="#">Customers</a>
-<a href="#">Appointments</a>
-<a href="#">Blog posts</a>
+<a class="active" href="#overview">Overview</a>
+<a href="#orders">Orders</a>
+<a href="404.html">Products</a>
+<a href="404.html">Customers</a>
+<a href="#appointments">Appointments</a>
+<a href="404.html">Blog posts</a>
 </nav>
 <p class="side-label">System</p>
 <nav class="side-nav">
-<a href="#">Team access</a>
-<a href="#">Settings</a>
+<a href="404.html">Team access</a>
+<a href="404.html">Settings</a>
 <a href="login.html">Log out</a>
 </nav>
 </aside>
@@ -32,13 +32,14 @@
 <p class="eyebrow">Admin dashboard</p>
 <h1>Good morning, Vishwa</h1>
 </div>
-<div style="display:flex;gap:12px;align-items:center">
-<a class="btn primary" href="#">Add product</a>
+<div class="dash-profile">
+<a class="btn primary" href="404.html">Add product</a>
 <button class="menu dash-menu" aria-label="Open dashboard navigation">☰</button>
+<div class="dash-profile-copy"><strong>Vishwa Admin</strong><span data-profile-email data-fallback="admin@stackly.example">admin@stackly.example</span></div>
 <span class="avatar">VA</span>
 </div>
 </header>
-<section class="dash-grid">
+<section class="dash-grid" id="overview">
 <article class="metric">
 <small>Revenue this month</small>
 <strong>₹18.4L</strong>
@@ -57,7 +58,7 @@
 </article>
 </section>
 <div class="dash-panels">
-<section class="dash-panel">
+<section class="dash-panel" id="orders">
 <h2>Latest orders</h2>
 <div class="order-list">
 <div class="order-row">
@@ -89,19 +90,19 @@
 <section class="dash-panel">
 <h2>Quick management</h2>
 <div class="quick-list">
-<a href="#">Add new product <span>+</span>
+<a href="404.html">Add new product <span>+</span>
 </a>
-<a href="#">Review appointments <span>08</span>
+<a href="#appointments">Review appointments <span>08</span>
 </a>
-<a href="#">Publish blog post <span>→</span>
+<a href="404.html">Publish blog post <span>→</span>
 </a>
-<a href="#">Export order report <span>↓</span>
+<a href="404.html">Export order report <span>↓</span>
 </a>
 </div>
 </section>
 </div>
 <div class="dash-panels">
-<section class="dash-panel">
+<section class="dash-panel" id="activity">
 <h2>Recent activity</h2>
 <ul class="activity">
 <li>
@@ -112,7 +113,7 @@
 <strong>Order dispatched</strong>Order #SV24018 handed to insured courier · 1 hour ago</li>
 </ul>
 </section>
-<section class="dash-panel">
+<section class="dash-panel" id="appointments">
 <h2>Today’s appointments</h2>
 <div class="order-list">
 <div class="order-row">
