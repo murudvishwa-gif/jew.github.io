@@ -78,11 +78,30 @@ document.querySelectorAll('form[data-auth]').forEach(form=>form.addEventListener
   const email=form.querySelector('input[type="email"]').value.trim();
   const role=form.querySelector('[name="domain"]').value;
   const nameInput=form.querySelector('[autocomplete="name"]');
+  const accountKey=email.toLowerCase();
+  let accounts={};
+  try{accounts=JSON.parse(localStorage.getItem('stacklyAccounts'))||{};}catch{}
+
   sessionStorage.setItem('stacklyEmail',email);
   sessionStorage.setItem('stacklyRole',role);
-  if(nameInput?.value.trim()) sessionStorage.setItem('stacklyName',nameInput.value.trim());
-  if(location.pathname.toLowerCase().includes('signup')) window.location.href='login.html';
-  else window.location.href=role==='admin'?'admin-dashboard.html':'user-dashboard.html';
+  if(nameInput?.value.trim()){
+    const name=nameInput.value.trim();
+    accounts[accountKey]={name,role};
+    localStorage.setItem('stacklyAccounts',JSON.stringify(accounts));
+    sessionStorage.setItem('stacklyName',name);
+    window.location.href='login.html';
+    return;
+  }
+
+  const savedName=accounts[accountKey]?.name;
+  const emailName=email
+    .split('@')[0]
+    .split(/[._-]+/)
+    .filter(Boolean)
+    .map(part=>part.charAt(0).toUpperCase()+part.slice(1))
+    .join(' ');
+  sessionStorage.setItem('stacklyName',savedName||emailName||'Member');
+  window.location.href=role==='admin'?'admin-dashboard.html':'user-dashboard.html';
 }));
 
 document.querySelectorAll('[data-profile-email]').forEach(element=>{
