@@ -269,9 +269,10 @@ body:not(.dashboard-body) .section>.wrap{position:relative}.page-hero+.section{p
 @media(max-width:420px){.site-header .nav-links{padding:90px 20px 30px}.site-header .nav-links a{font-size:23px;min-height:48px}.site-header .nav-links .mobile-auth-link{font-size:12px}}
 
 /* Viewport safety and account usability */
-html,body{width:100%;max-width:100%;overflow-x:clip}
+html,body{width:100%;max-width:100%;overflow-x:hidden;overflow-x:clip}
 main,section,header,footer,.wrap,.dashboard-layout,.dashboard-main,.dashboard-view{min-width:0;max-width:100%}
 img,svg,video,canvas,iframe{max-width:100%}
+input,select,textarea,button{min-width:0;max-width:100%}
 p,h1,h2,h3,h4,a,span,strong,small{overflow-wrap:anywhere}
 .dashboard-main{width:100%;overflow-x:hidden}
 .dash-top>div:first-of-type{min-width:0;margin-right:auto}
@@ -281,6 +282,15 @@ p,h1,h2,h3,h4,a,span,strong,small{overflow-wrap:anywhere}
 .support-details a{color:var(--gold2);font-size:13px}
 .support-details{display:grid;gap:8px;margin-top:18px}
 .logout-link{margin-top:8px;border:1px solid rgba(214,173,85,.45)!important;color:var(--gold2)!important}
+.dash-profile{border:1px solid transparent;background:transparent;color:inherit;padding:6px;cursor:pointer;border-radius:3px}
+.dash-profile:hover,.dash-profile:focus-visible{border-color:var(--line);background:rgba(214,173,85,.07);outline:none}
+.profile-panel{display:flex;align-items:flex-start;gap:24px;max-width:680px}
+.profile-avatar{width:72px;height:72px;flex:0 0 72px;font-size:20px}
+.profile-panel small{display:block;color:var(--gold);margin:4px 0;text-transform:uppercase;letter-spacing:1px}
+.profile-panel h2{margin-bottom:18px}
+.profile-panel p{margin:0 0 18px}
+.footer-bottom>div{flex-wrap:wrap}
+.newsletter form,.footer-signup{max-width:100%}
 .error-page>div{width:min(760px,100%);max-width:100%}
 .error-code{max-width:100%;overflow:hidden}
 .occasion-card{isolation:isolate;background-position:center;background-size:cover}
@@ -300,6 +310,23 @@ p,h1,h2,h3,h4,a,span,strong,small{overflow-wrap:anywhere}
   .dash-top .eyebrow{letter-spacing:1.5px}
   .dash-profile .avatar{width:38px;height:38px}
   .occasion-card,.craft-flow article,.footer-subscribe,.footer-bottom{min-width:0}
+  .profile-panel{gap:16px}
+  .profile-avatar{width:56px;height:56px;flex-basis:56px}
+}
+@media(max-width:380px){
+  .dashboard-main{padding-inline:12px}
+  .dash-top{grid-template-columns:44px minmax(0,1fr) 38px}
+  .dash-top .eyebrow{font-size:9px}
+  .dash-profile{padding:0}
+  .profile-panel{display:grid}
+  .footer-subscribe .footer-signup{grid-template-columns:1fr}
+  .footer-subscribe .footer-signup button{min-height:44px}
+}
+
+@media(max-width:900px){
+  .site-header .nav-links{width:auto;max-width:none}
+  .sidebar.open:after{content:none}
+  .sidebar.open{box-shadow:20px 0 45px rgba(0,0,0,.75),100vw 0 0 rgba(0,0,0,.55)}
 }
 
 

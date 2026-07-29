@@ -85,8 +85,9 @@ document.querySelectorAll('form[data-auth]').forEach(form=>form.addEventListener
   else window.location.href=role==='admin'?'admin-dashboard.html':'user-dashboard.html';
 }));
 
-const profileEmail=document.querySelector('[data-profile-email]');
-if(profileEmail) profileEmail.textContent=sessionStorage.getItem('stacklyEmail')||profileEmail.dataset.fallback;
+document.querySelectorAll('[data-profile-email]').forEach(element=>{
+  element.textContent=sessionStorage.getItem('stacklyEmail')||element.dataset.fallback;
+});
 const profileName=sessionStorage.getItem('stacklyName');
 document.querySelectorAll('[data-profile-name]').forEach(element=>{
   element.textContent=profileName||element.dataset.fallback||'Vishwa';
