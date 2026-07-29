@@ -77,14 +77,24 @@ document.querySelectorAll('form[data-auth]').forEach(form=>form.addEventListener
   if(!form.checkValidity()){form.reportValidity();return;}
   const email=form.querySelector('input[type="email"]').value.trim();
   const role=form.querySelector('[name="domain"]').value;
+  const nameInput=form.querySelector('[autocomplete="name"]');
   sessionStorage.setItem('stacklyEmail',email);
   sessionStorage.setItem('stacklyRole',role);
+  if(nameInput?.value.trim()) sessionStorage.setItem('stacklyName',nameInput.value.trim());
   if(location.pathname.toLowerCase().includes('signup')) window.location.href='login.html';
   else window.location.href=role==='admin'?'admin-dashboard.html':'user-dashboard.html';
 }));
 
 const profileEmail=document.querySelector('[data-profile-email]');
 if(profileEmail) profileEmail.textContent=sessionStorage.getItem('stacklyEmail')||profileEmail.dataset.fallback;
+const profileName=sessionStorage.getItem('stacklyName');
+document.querySelectorAll('[data-profile-name]').forEach(element=>{
+  element.textContent=profileName||element.dataset.fallback||'Vishwa';
+});
+document.querySelectorAll('[data-profile-initials]').forEach(element=>{
+  const source=profileName||element.dataset.fallback||'Vishwa';
+  element.textContent=source.split(/\s+/).filter(Boolean).slice(0,2).map(part=>part[0]).join('').toUpperCase();
+});
 
 const dashMenu=document.querySelector('.dash-menu');
 const sidebar=document.querySelector('.sidebar');
